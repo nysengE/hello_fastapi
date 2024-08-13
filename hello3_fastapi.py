@@ -5,7 +5,15 @@ app = FastAPI()
 
 @app.get('/')
 def index():
-    return 'Hello, World!! again!!'
+    return 'Hello, World!!'
+
+@app.get('/sayHello')
+def sayHello(msg : str):
+    return f'Hello, {msg}!!'
+
+@app.get('/sayAgain/{msg}')
+def sayHello(msg : str):
+    return f'Hello, {msg}!!'
 
 
 # __name__: 실행중인 모듈 이름을 의미하는 매직키워드
@@ -13,4 +21,4 @@ def index():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run('hello2_fastapi:app', reload=True)
+    uvicorn.run('hello3_fastapi:app', reload=True)
