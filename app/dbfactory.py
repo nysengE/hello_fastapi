@@ -8,10 +8,17 @@ engine = create_engine(config.sqlite_url, connect_args={}, echo=True)
 SessionLocal = sessionmaker(
     autocommit=False, autoflush=False, bind=engine)
 
-def db_startup():
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+async def db_startup():
     sungjuk.Base.metadata.create_all(engine)
     member.Base.metadata.create_all(engine)
 
 
-def db_shutdown():
+async def db_shutdown():
     pass
