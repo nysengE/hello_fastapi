@@ -9,6 +9,6 @@ class NewMemberModel(BaseModel):
     name: str
     email: str
 
-class MemberModel(BaseModel):
+class MemberModel(NewMemberModel):
     mno: int
     regdate : datetime
