@@ -22,3 +22,4 @@ async def db_startup():
 
 async def db_shutdown():
     pass
+
